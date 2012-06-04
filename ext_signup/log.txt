@@ -1,0 +1,4 @@
+entering view
+postheader
+passing controller
+prefooter
