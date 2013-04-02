@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="blocks/ext_signup/db" VERSION="20100515" COMMENT="XMLDB file for Moodle blocks/ext_signup"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="block_ext_signup" COMMENT="Default comment for ext_signup, please edit me">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="userid"/>
+        <FIELD NAME="userid" TYPE="char" LENGTH="32" NOTNULL="true" SEQUENCE="false" COMMENT="contains MD5 temporary userids or numeric" PREVIOUS="id" NEXT="courseid"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="false" PREVIOUS="userid" NEXT="accepted"/>
+        <FIELD NAME="accepted" TYPE="int" LENGTH="6" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" DEFAULT="-1000" PREVIOUS="courseid" NEXT="timecreated"/>
+        <FIELD NAME="timecreated" TYPE="int" LENGTH="11" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="accepted" NEXT="timeaccepted"/>
+        <FIELD NAME="timeaccepted" TYPE="int" LENGTH="11" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="timecreated" NEXT="acceptedby"/>
+        <FIELD NAME="acceptedby" TYPE="int" LENGTH="10" NOTNULL="false" UNSIGNED="true" SEQUENCE="false" PREVIOUS="timeaccepted" NEXT="reason" />
+        <FIELD NAME="reason" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" PREVIOUS="acceptedby"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
